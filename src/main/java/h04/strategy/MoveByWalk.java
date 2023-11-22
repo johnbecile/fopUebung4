@@ -67,6 +67,9 @@ public class MoveByWalk implements MoveStrategyWithCounter {
                 }
             }
         }
+        while (robot.getDirection() != Direction.UP) {
+            robot.turnLeft();
+        }
     }
 
     /**
