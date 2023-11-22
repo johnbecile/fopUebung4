@@ -4,6 +4,9 @@ import fopbot.Direction;
 import fopbot.Field;
 import fopbot.Robot;
 
+/**
+ * Robot type, which move by walk.
+ */
 public class MoveByWalk implements MoveStrategyWithCounter {
     private int moveCount = -1;
 
