@@ -9,6 +9,6 @@ public interface FieldSelector {
      *
      * @param listener the listener
      */
-    public void setFieldSelectionListener(FieldSelectionListener listener);
+    void setFieldSelectionListener(FieldSelectionListener listener);
 
 }

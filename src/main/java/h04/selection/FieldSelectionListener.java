@@ -12,5 +12,5 @@ public interface FieldSelectionListener {
      *
      * @param field the field
      */
-    public void onFieldSelection(Field field);
+    void onFieldSelection(Field field);
 }

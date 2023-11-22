@@ -14,5 +14,5 @@ public interface MoveStrategy {
      * @param robot the given robot
      * @param field the given field
      */
-    public void start(Robot robot, Field field);
+    void start(Robot robot, Field field);
 }

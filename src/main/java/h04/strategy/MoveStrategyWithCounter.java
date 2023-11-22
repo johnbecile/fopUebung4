@@ -10,5 +10,5 @@ public interface MoveStrategyWithCounter extends MoveStrategy {
      *
      * @return the move count
      */
-    public int getMoveCount();
+    int getMoveCount();
 }
