@@ -31,11 +31,11 @@ public class MouseFieldSelector implements FieldSelector, FieldClickListener {
      */
     @Override
     public void onFieldClick(FieldClickEvent event) {
-        if (field == null) {
-            field = event.getField();
-        } else if (event.getField() == field) {
+        if (event.getField() == field) {
             listener.onFieldSelection(event.getField());
             field = null;
+        } else {
+            field = event.getField();
         }
     }
 

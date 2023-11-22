@@ -31,46 +31,44 @@ public class KeyboardFieldSelector implements FieldSelector, KeyPressListener {
      */
     @Override
     public void onKeyPress(KeyPressEvent event) {
+        Key myKey = event.getKey();
         if (counter == 0) {
             event.getWorld().getField(0, 0).setFieldColor(Color.RED);
             markedField = event.getWorld().getField(0, 0);
             counter++;
-        }
-        if ((markedField != null) && (
-            (event.getKey() == Key.UP) || (event.getKey() == Key.DOWN) || (event.getKey() == Key.LEFT) || (event.getKey() == Key.RIGHT)
+        } else if ((markedField != null) && (
+            (myKey == Key.UP) || (myKey == Key.DOWN) || (myKey == Key.LEFT) || (myKey == Key.RIGHT)
         )) {
-            myRoll(event.getKey());
-        }
-        if (markedField != null && event.getKey() == Key.SPACE) {
+            myRoll(myKey);
+        } else if (markedField != null && myKey == Key.SPACE) {
             listener.onFieldSelection(markedField);
         }
     }
 
     private void myRoll(Key key) {
         markedField.setFieldColor(null);
+        int myX = markedField.getX();
+        int myY = markedField.getY();
         if (key == Key.UP) {
-            if (markedField.getY() != markedField.getWorld().getHeight()) {
-                markedField = markedField.getWorld().getField(markedField.getX(), markedField.getY() + 1);
+            if (myY != markedField.getWorld().getHeight() - 1) {
+                markedField = markedField.getWorld().getField(myX, myY + 1);
             } else {
-                markedField = markedField.getWorld().getField(markedField.getX(), 0);
+                markedField = markedField.getWorld().getField(myX, 0);
             }
-        }
-        if (key == Key.DOWN) {
+        } else if (key == Key.DOWN) {
             if (markedField.getY() != 0) {
                 markedField = markedField.getWorld().getField(markedField.getX(), markedField.getY() - 1);
             } else {
-                markedField = markedField.getWorld().getField(markedField.getX(), markedField.getWorld().getHeight());
+                markedField = markedField.getWorld().getField(markedField.getX(), markedField.getWorld().getHeight() - 1);
             }
-        }
-        if (key == Key.LEFT) {
+        } else if (key == Key.LEFT) {
             if (markedField.getX() != 0) {
                 markedField = markedField.getWorld().getField(markedField.getX() - 1, markedField.getY());
             } else {
-                markedField = markedField.getWorld().getField(markedField.getWorld().getWidth(), markedField.getY());
+                markedField = markedField.getWorld().getField(markedField.getWorld().getWidth() - 1, markedField.getY());
             }
-        }
-        if (key == Key.RIGHT) {
-            if (markedField.getX() != markedField.getWorld().getWidth()) {
+        } else if (key == Key.RIGHT) {
+            if (markedField.getX() != markedField.getWorld().getWidth() - 1) {
                 markedField = markedField.getWorld().getField(markedField.getX() + 1, markedField.getY());
             } else {
                 markedField = markedField.getWorld().getField(0, markedField.getY());
